@@ -34,9 +34,46 @@ nav ion-icon {
 /* ------------------------------------- MAIN ------------------------------------- */
 
 main {
+    padding-top: 8%;
     background-color: #F3F3F3;
     width: var(--default-width);
-    height: 500px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    padding: 10px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+}
+
+section .name {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.online-offline {
+    background-color: #DCDCDC;
+}
+
+.message {
+    background-color: #FFFFFF;
+}
+
+.private-message {
+    background-color: #FFDEDE;
+}
+
+section .time {
+    color: #AAA;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+section div {
+    display: block;
 }
 
 

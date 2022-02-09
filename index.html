@@ -19,12 +19,44 @@
         </nav>
     </header>
     <main>
+        <section class="online-offline">
+            <div>
+                <span class="time">(09:21:45)</span>
+                <strong class="name">João:</strong>
+                <small class="status">entra na sala...</small>
+            </div>
+        </section>
 
+        <section class="message">
+            <div>
+                <span class="time">(09:21:46)</span>
+                <strong class="name">João:</strong>
+                <small class="msg">Olá Mundo!</small>
+            </div>
+        </section>
+
+        <section class="private-message">
+            <div>
+                <span class="time">(09:21:47)</span>
+                <strong class="name">João:</strong>
+                <small class="for">reservadamente para</small>
+                <strong class="name">Ninguém:</strong>
+                <small class="msg">Estou falando sozinho...</small>
+            </div>
+        </section>
+
+        <section class="online-offline">
+            <div>
+                <span class="time">(09:21:48)</span>
+                <strong class="name">João:</strong>
+                <small class="status">sai na sala...</small>
+            </div>
+        </section>
     </main>
     <footer>
         <div>
             <input type="text" placeholder="Escreva aqui...">
-            <ion-icon name="paper-plane-outline"></ion-icon>
+            <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
         </div>
     </footer>
     <script src="script/scrpit.js"></script>
