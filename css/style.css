@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+:root {
+    --default-width: 375px;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+
+/* ------------------------------------- CABEÇALHO ------------------------------------- */
+
+header {
+    width: var(--default-width);
+    background-color: #FFF;
+    position: fixed;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    left: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+nav ion-icon {
+    font-size: 45px;
+}
+
+
+/* ------------------------------------- MAIN ------------------------------------- */
+
+main {
+    background-color: #F3F3F3;
+    width: var(--default-width);
+    height: 500px;
+}
+
+
+/* ------------------------------------- FOOTER ------------------------------------- */
+
+footer {
+    position: sticky;
+    width: var(--default-width);
+    bottom: 0;
+    height: 80px;
+    background-color: #FFF;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+
+footer div {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer input {
+    border: none;
+    height: 100%;
+    width: 90%;
+}
+
+footer input::placeholder {
+    color: black;
+    font-style: italic;
+    padding: 2%;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+footer ion-icon {
+    font-size: 26px;
+    margin-right: 2%;
+}
