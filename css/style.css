@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 :root {
-    --default-width: 375px;
+    --default-width: 100%;
 }
 
 * {
-    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -28,13 +31,15 @@ nav {
 
 nav ion-icon {
     font-size: 45px;
+    cursor: pointer;
 }
 
 
 /* ------------------------------------- MAIN ------------------------------------- */
 
 main {
-    padding-top: 8%;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 100px;
     background-color: #F3F3F3;
     width: var(--default-width);
     height: 100vh;
@@ -50,7 +55,7 @@ section {
 }
 
 section .name {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
 }
 
@@ -68,12 +73,15 @@ section .name {
 
 section .time {
     color: #AAA;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
 }
 
-section div {
-    display: block;
+section div p {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 4px;
 }
 
 
@@ -99,6 +107,9 @@ footer input {
     border: none;
     height: 100%;
     width: 90%;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
 }
 
 footer input::placeholder {
@@ -110,6 +121,77 @@ footer input::placeholder {
 }
 
 footer ion-icon {
-    font-size: 26px;
-    margin-right: 2%;
+    font-size: 30px;
+    margin-right: 3%;
+    cursor: pointer;
+}
+
+.body-fixed {
+    overflow: hidden;
+}
+
+
+/* ------------------------------------- MENU ------------------------------------- */
+
+.hide {
+    display: none;
+}
+
+aside {
+    z-index: 1;
+    position: fixed;
+}
+
+.menu {
+    display: flex;
+    width: 70%;
+    z-index: 1;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+    background-color: #FFF;
+    flex-direction: column;
+}
+
+.clickable-background {
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    bottom: 0;
+    top: 0;
+}
+
+.menu p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.menu .contacts div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.menu ion-icon {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.menu span {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin: 5px;
+}
+
+.menu .visibility div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
 }
