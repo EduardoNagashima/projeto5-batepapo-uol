@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta from="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bate-Papo Uol</title>
     <link rel="icon" type="image/x-icon" href="/images/logo_uol_favicon.png">
     <link rel="stylesheet" href="css/reset.css">
@@ -19,29 +19,29 @@
             <div class="contacts">
                 <div onclick="selectPerson(this)">
                     <div>
-                        <ion-icon name="people"></ion-icon>
+                        <ion-icon from="people"></ion-icon>
                         <p class="everyone">Todos</p>
                     </div>
                     <div>
-                        <ion-icon name="checkmark-sharp"></ion-icon>
+                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
                 <div onclick="selectPerson(this)">
                     <div>
-                        <ion-icon name="person-circle"></ion-icon>
-                        <p class="name">João</p>
+                        <ion-icon from="person-circle"></ion-icon>
+                        <p class="from">João</p>
                     </div>
                     <div>
-                        <ion-icon name="checkmark-sharp"></ion-icon>
+                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
                 <div onclick="selectPerson(this)">
                     <div>
-                        <ion-icon name="person-circle"></ion-icon>
-                        <p class="name">Maria</p>
+                        <ion-icon from="person-circle"></ion-icon>
+                        <p class="from">Maria</p>
                     </div>
                     <div>
-                        <ion-icon name="checkmark-sharp"></ion-icon>
+                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
             </div>
@@ -49,20 +49,20 @@
             <div class="visibility">
                 <div onclick="selectVisibility(this)">
                     <div>
-                        <ion-icon name="lock-open"></ion-icon>
+                        <ion-icon from="lock-open"></ion-icon>
                         <p>Público</p>
                     </div>
                     <div>
-                        <ion-icon name="checkmark-sharp"></ion-icon>
+                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
                 <div onclick="selectVisibility(this)">
                     <div>
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon from="lock-closed"></ion-icon>
                         <p>Reservadamente</p>
                     </div>
                     <div>
-                        <ion-icon name="checkmark-sharp"></ion-icon>
+                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
             </div>
@@ -72,43 +72,11 @@
         <nav>
             <img src="images/logo_uol.png" alt="logo-bate-papo-uol">
             <ion-icon name="people-sharp" onclick="show()"></ion-icon>
+
         </nav>
     </header>
     <main>
-
-        <section class="online-offline">
-            <div>
-                <span class="time">(09:21:45)</span>
-                <strong class="name">João:</strong>
-                <p class="status">entra na sala...</p>
-            </div>
-        </section>
-
-        <section class="message">
-            <div>
-                <span class="time">(09:21:46)</span>
-                <strong class="name">João:</strong>
-                <p class="msg">Olá Mundo!</p>
-            </div>
-        </section>
-
-        <section class="private-message">
-            <div>
-                <span class="time">(09:21:47)</span>
-                <strong class="name">João:</strong>
-                <p class="for">reservadamente para</p>
-                <strong class="name">Ninguém:</strong>
-                <p class="msg">Estou falando sozinho...</p>
-            </div>
-        </section>
-
-        <section class="online-offline">
-            <div>
-                <span class="time">(09:21:48)</span>
-                <strong class="name">João:</strong>
-                <p class="status">sai na sala...</p>
-            </div>
-        </section>
+        <!---- Aqui vai as msg-------  -->
     </main>
     <footer>
         <div>
@@ -116,10 +84,10 @@
             <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
         </div>
     </footer>
-    <script src="script/scrpit.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script/scrpit.js"></script>
 </body>
 
 </html>

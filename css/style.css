@@ -42,7 +42,6 @@ main {
     padding-top: 100px;
     background-color: #F3F3F3;
     width: var(--default-width);
-    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -88,7 +87,7 @@ section div p {
 /* ------------------------------------- FOOTER ------------------------------------- */
 
 footer {
-    position: sticky;
+    position: fixed;
     width: var(--default-width);
     bottom: 0;
     height: 80px;
@@ -122,8 +121,9 @@ footer input::placeholder {
 
 footer ion-icon {
     font-size: 30px;
-    margin-right: 3%;
     cursor: pointer;
+    z-index: 1;
+    margin-right: 2%;
 }
 
 .body-fixed {
@@ -186,7 +186,7 @@ aside {
     font-size: 20px;
     font-weight: 700;
     text-align: center;
-    margin: 5px;
+    margin: 30px;
 }
 
 .menu .visibility div {
@@ -194,4 +194,8 @@ aside {
     align-items: center;
     justify-content: space-between;
     margin: 5px;
+}
+
+.mark {
+    color: #28bb25;
 }
