@@ -1,8 +1,16 @@
 let init = false;
 
 let pessoa = {
-    name: 'SOCORRO PFV'
+    name: 'Eduardo'
 }
+
+let selected = 'Todos';
+
+// USAR ESSA FUNÇÃO PRIMEIRO DE TUDO, DEPOIS DELA PODER FAZER TUDO O RESTO!
+// function pegarNome() {
+//     pessoa.name = document.querySelector('.login input').value;
+//     document.querySelector('.login').classList.add('hide');
+// }
 
 let lastTime = '00:00:00';
 
@@ -45,6 +53,16 @@ function writeMessege(getMesseges) {
                         <p class="text">${obj.text}</p>
                     </div>
                 </section>`;
+            } else if (obj.type == "private_message") {
+                msg.innerHTML += `
+                    <section class="private-message">
+                    <div>
+                        <span class="time">${obj.time}</span>
+                        <strong class="from"> ${obj.from}</strong>
+                        <span class="to">para ${obj.to}:</span>
+                        <p class="text">${obj.text}</p>
+                    </div>
+                </section>`;
             }
         }
     }
@@ -67,7 +85,7 @@ function listPersons(resposta) {
     for (let i = 0; i < resposta.length; i++) {
         person.innerHTML += `<div onclick="selectPerson(this)">
     <div>
-        <ion-icon from="people"></ion-icon>
+        <ion-icon name="person-circle-sharp"></ion-icon>
         <p class="from">${resposta[i].name}</p>
     </div>
     <div>
@@ -134,14 +152,31 @@ function deuCerto(resposta) {
 
 function sendMessage() {
     let msgWrite = document.querySelector('footer input').value;
-    let obj = {
-        from: pessoa.name,
-        to: "Todos",
-        text: msgWrite,
-        type: "message"
+
+    let toPessoa = document.querySelector('.selected .from').innerHTML;
+
+    let privateMessage = document.querySelector('.visibility .selected p').innerHTML;
+
+    if (privateMessage == 'Reservadamente') {
+        let obj = {
+            from: pessoa.name,
+            to: toPessoa,
+            text: msgWrite,
+            type: "private_message"
+        }
+        axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", obj);
+        document.querySelector('footer input').value = '';
+    } else {
+        let obj = {
+            from: pessoa.name,
+            to: toPessoa,
+            text: msgWrite,
+            type: "message"
+        }
+        axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", obj);
+        document.querySelector('footer input').value = '';
     }
-    axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", obj);
-    document.querySelector('footer input').value = '';
+
 }
 
 setInterval(get, 3000);

@@ -12,53 +12,45 @@
 </head>
 
 <body>
+    <!-- <div class="login">
+        <div>
+            <img src="images/logo_grande.png" alt="logo_grande">
+        </div>
+        <div>
+            <input type="text">
+            <button onclick="pegarNome(this)">Entrar</button>
+        </div>
+    </div> -->
+
     <aside class="hide">
         <div class="clickable-background pointer" onclick="show(this)"></div>
         <div class="menu">
             <span>Escolha um contato para enviar mensagem:</span>
             <div class="contacts">
                 <div onclick="selectPerson(this)">
-                    <div>
-                        <ion-icon from="people"></ion-icon>
-                        <p class="everyone">Todos</p>
+                    <div class="selected">
+                        <ion-icon name="people-sharp"></ion-icon>
+                        <p class="from">Todos</p>
                     </div>
                     <div>
-                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
-                    </div>
-                </div>
-                <div onclick="selectPerson(this)">
-                    <div>
-                        <ion-icon from="person-circle"></ion-icon>
-                        <p class="from">João</p>
-                    </div>
-                    <div>
-                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
-                    </div>
-                </div>
-                <div onclick="selectPerson(this)">
-                    <div>
-                        <ion-icon from="person-circle"></ion-icon>
-                        <p class="from">Maria</p>
-                    </div>
-                    <div>
-                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
+                        <ion-icon class="check mark" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
             </div>
             <span>Escolha a visibilidade:</span>
             <div class="visibility">
                 <div onclick="selectVisibility(this)">
-                    <div>
-                        <ion-icon from="lock-open"></ion-icon>
+                    <div class="selected">
+                        <ion-icon name="lock-open"></ion-icon>
                         <p>Público</p>
                     </div>
                     <div>
-                        <ion-icon class="check" name="checkmark-outline"></ion-icon>
+                        <ion-icon class="check mark" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
                 <div onclick="selectVisibility(this)">
                     <div>
-                        <ion-icon from="lock-closed"></ion-icon>
+                        <ion-icon name="lock-closed"></ion-icon>
                         <p>Reservadamente</p>
                     </div>
                     <div>
@@ -72,7 +64,6 @@
         <nav>
             <img src="images/logo_uol.png" alt="logo-bate-papo-uol">
             <ion-icon name="people-sharp" onclick="show()"></ion-icon>
-
         </nav>
     </header>
     <main>
@@ -80,14 +71,14 @@
     </main>
     <footer>
         <div>
-            <input type="text" placeholder="Escreva aqui...">
+            <input type="text " placeholder="Escreva aqui... ">
             <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
         </div>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="script/scrpit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
+    <script src="script/scrpit.js "></script>
 </body>
 
 </html>
