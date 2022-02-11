@@ -107,11 +107,6 @@ function selectPerson(el) {
     el.querySelector('.check').classList.add('mark');
     el.classList.add('selected');
     atualizarEnvio(el)
-        // let from = el.querySelector('.from').innerHTML;
-        // let p = document.querySelector('footer div p');
-        // let privateMessage = document.querySelector('.visibility .selected p').innerHTML;
-        // p.innerHTML = `Enviando para ${from} (${privateMessage})`;
-        // p.classList.remove('hide');
 }
 
 function atualizarEnvio(el) {
@@ -213,14 +208,16 @@ function scrollar() {
     main[main.length - 1].scrollIntoView();
 }
 
-function username() {
-    pessoa.name = prompt('Qual é o seu nome?');
+function pegarNome() {
+    pessoa.name = document.querySelector('.login input').value;
+    let load = document.querySelector('.nomeinput');
+    load.innerHTML = `<img src="images/loading.gif" alt="loading">`
+    setInterval(get, 3000);
+    entrarSala();
+    setInterval(isOnline, 5000);
+    getParticipantes();
+    let teste = document.querySelector('.login');
+    console.log(teste);
+    teste.classList.add('invisivel');
     return pessoa;
 }
-
-username();
-setInterval(get, 3000);
-entrarSala();
-setInterval(isOnline, 5000);
-getParticipantes();
-// setInterval(getParticipantes, 10000);
