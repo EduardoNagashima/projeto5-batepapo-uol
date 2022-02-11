@@ -1,59 +1,81 @@
-let selectedPerson = '';
+let init = false;
 
 let pessoa = {
-    name: 'JOÃO CARAI'
+    name: 'SOCORRO PFV'
 }
 
+let lastTime = '00:00:00';
 
 function writeMessege(getMesseges) {
+
+    if (init === true) {
+        let ultimo = document.querySelectorAll('section');
+        lastTime = ultimo[ultimo.length - 1].querySelector('.time').innerHTML;
+    }
+
     msg = document.querySelector('main');
+
     for (let i = 0; i < getMesseges.length; i++) {
         let obj = {
-            from: getMesseges[i].from,
-            to: getMesseges[i].to,
-            text: getMesseges[i].text,
-            type: getMesseges[i].type,
-            time: getMesseges[i].time
-        }
-        if (obj.text == 'sai da sala...' || obj.text == 'entra na sala...') {
-            msg.innerHTML += `
-                <section class="isOnline-offline">
-                <div>
-                    <span class="time">${obj.time}</span>
-                    <strong class="from">${obj.from}</strong>
-                    <p class="text">${obj.text}</p>
-                </div>
-            </section>`;
-        } else {
-            msg.innerHTML += `
-            <section class="">
-            <div>
-                <span class="time">${obj.time}</span>
-                <strong class="from"> ${obj.from}</strong>
-                <span class="to">para ${obj.to}:</span>
-                <p class="text">${obj.text}</p>
-            </div>
-        </section>`;
+                from: getMesseges[i].from,
+                to: getMesseges[i].to,
+                text: getMesseges[i].text,
+                type: getMesseges[i].type,
+                time: getMesseges[i].time
+            }
+            // -- condição pra evitar mensagens antigas ----
+        if (getMesseges[i].time > lastTime) {
+            if (obj.type == 'status') {
+                msg.innerHTML += `
+                        <section class="online-offline">
+                        <div>
+                            <span class="time">${obj.time}</span>
+                            <strong class="from">${obj.from}</strong>
+                            <span class="to">para ${obj.to}:</span>
+                            <p class="text">${obj.text}</p>
+                        </div>
+                    </section>`;
+            } else if (obj.type == 'message') {
+                msg.innerHTML += `
+                    <section class="message">
+                    <div>
+                        <span class="time">${obj.time}</span>
+                        <strong class="from"> ${obj.from}</strong>
+                        <span class="to">para ${obj.to}:</span>
+                        <p class="text">${obj.text}</p>
+                    </div>
+                </section>`;
+            }
         }
     }
 
+    init = true;
 }
 
-// function listPersons(getMesseges) {
-//     console.log(getMesseges)
-//     let person = document.querySelector('contacts');
-//     for (let i = 0; i < getMesseges.length; i++) {
-//         person.innerHTML += `<div onclick="selectPerson(this)">
-//     <div>
-//         <ion-icon from="people"></ion-icon>
-//         <p class="from">${getMesseges[i].from}</p>
-//     </div>
-//     <div>
-//         <ion-icon class="check" name="checkmark-outline"></ion-icon>
-//     </div>
-//     </div>`
-//     }
-// }
+function getParticipantes() {
+    let participantes = axios.get('https://mock-api.driven.com.br/api/v4/uol/participants');
+    participantes.then(ProcessaResposta);
+}
+
+function ProcessaResposta(resposta) {
+    let pessoas = resposta.data;
+    listPersons(pessoas);
+}
+
+function listPersons(resposta) {
+    let person = document.querySelector('.contacts');
+    for (let i = 0; i < resposta.length; i++) {
+        person.innerHTML += `<div onclick="selectPerson(this)">
+    <div>
+        <ion-icon from="people"></ion-icon>
+        <p class="from">${resposta[i].name}</p>
+    </div>
+    <div>
+        <ion-icon class="check" name="checkmark-outline"></ion-icon>
+    </div>
+    </div>`
+    }
+}
 
 function selectPerson(el) {
     let selected = document.querySelector('.contacts .selected');
@@ -81,7 +103,6 @@ function selectVisibility(el) {
     el.classList.add('selected');
 }
 
-
 function show(element) {
     let el = document.querySelector('.hide');
     let body = document.querySelector('body')
@@ -103,32 +124,27 @@ function get() {
     promisse.then(deuCerto);
 }
 
-function deuCerto(response) {
-    writeMessege(response.data);
-    // listPersons(response.data);
-}
-
 function isOnline() {
     axios.post("https://mock-api.driven.com.br/api/v4/uol/status", pessoa);
 }
 
+function deuCerto(resposta) {
+    writeMessege(resposta.data);
+}
 
 function sendMessage() {
     let msgWrite = document.querySelector('footer input').value;
-    pessoa = {
-        text: msgWrite
+    let obj = {
+        from: pessoa.name,
+        to: "Todos",
+        text: msgWrite,
+        type: "message"
     }
+    axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", obj);
     document.querySelector('footer input').value = '';
-}
-
-function promessaFeita(resposta) {
-    console.log(resposta.data);
-}
-
-function promessaFalhou(erro) {
-    console.log(erro.response.status);
 }
 
 setInterval(get, 3000);
 entrarSala();
 setInterval(isOnline, 5000);
+getParticipantes();

@@ -44,6 +44,7 @@ main {
     width: var(--default-width);
     display: flex;
     flex-direction: column;
+    margin-bottom: 100px;
 }
 
 section {
@@ -152,6 +153,7 @@ aside {
     position: fixed;
     background-color: #FFF;
     flex-direction: column;
+    overflow: auto;
 }
 
 .clickable-background {
