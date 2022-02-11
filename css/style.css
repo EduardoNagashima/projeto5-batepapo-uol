@@ -48,6 +48,10 @@ main {
     margin-bottom: 100px;
 }
 
+.checkmark {
+    color: #FFF;
+}
+
 section {
     padding: 10px;
     margin-bottom: 4px;
@@ -111,12 +115,22 @@ footer input {
     font-size: 20px;
     cursor: pointer;
     outline: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+footer div p {
+    position: absolute;
+    bottom: 8px;
+    left: 20px;
+    color: #AAA;
+    font-size: 18px;
+    font-weight: 300;
 }
 
 footer input::placeholder {
     color: black;
     font-style: italic;
-    padding: 2%;
     font-weight: 400;
     font-size: 18px;
 }

@@ -39,43 +39,43 @@ function writeMessege(getMesseges) {
                         <div>
                             <span class="time">${obj.time}</span>
                             <strong class="from">${obj.from}</strong>
-                            <span class="to">para ${obj.to}:</span>
+                            <span class="to">para <b>${obj.to}</b>:</span>
                             <p class="text">${obj.text}</p>
                         </div>
                     </section>`;
             } else if (obj.type == 'message') {
                 msg.innerHTML += `
-                    <section class="message">
+                    <section class="message" data-identifier="message">
                     <div>
                         <span class="time">${obj.time}</span>
                         <strong class="from"> ${obj.from}</strong>
-                        <span class="to">para ${obj.to}:</span>
+                        <span class="to">para <b>${obj.to}</b>:</span>
                         <p class="text">${obj.text}</p>
                     </div>
                 </section>`;
-            } else if (obj.type == "private_message") {
+            } else if (obj.type == "private_message" && (getMesseges[i].to == pessoa.name || getMesseges[i].from == pessoa.name)) {
                 msg.innerHTML += `
-                    <section class="private-message">
+                    <section class="private-message" data-identifier="message">
                     <div>
                         <span class="time">${obj.time}</span>
                         <strong class="from"> ${obj.from}</strong>
-                        <span class="to">para ${obj.to}:</span>
+                        <span class="to">para <b>${obj.to}</b>:</span>
                         <p class="text">${obj.text}</p>
                     </div>
                 </section>`;
             }
         }
     }
-
     init = true;
+    scrollar();
 }
 
 function getParticipantes() {
     let participantes = axios.get('https://mock-api.driven.com.br/api/v4/uol/participants');
-    participantes.then(ProcessaResposta);
+    participantes.then(processaResposta);
 }
 
-function ProcessaResposta(resposta) {
+function processaResposta(resposta) {
     let pessoas = resposta.data;
     listPersons(pessoas);
 }
@@ -88,7 +88,7 @@ function listPersons(resposta) {
         <ion-icon name="person-circle-sharp"></ion-icon>
         <p class="from">${resposta[i].name}</p>
     </div>
-    <div>
+    <div class="checkmark">
         <ion-icon class="check" name="checkmark-outline"></ion-icon>
     </div>
     </div>`
@@ -106,7 +106,22 @@ function selectPerson(el) {
     }
     el.querySelector('.check').classList.add('mark');
     el.classList.add('selected');
+    atualizarEnvio(el)
+        // let from = el.querySelector('.from').innerHTML;
+        // let p = document.querySelector('footer div p');
+        // let privateMessage = document.querySelector('.visibility .selected p').innerHTML;
+        // p.innerHTML = `Enviando para ${from} (${privateMessage})`;
+        // p.classList.remove('hide');
 }
+
+function atualizarEnvio(el) {
+    let from = el.querySelector('.from').innerHTML;
+    let p = document.querySelector('footer div p');
+    let privateMessage = document.querySelector('.visibility .selected p').innerHTML;
+    p.innerHTML = `Enviando para ${from} (${privateMessage})`;
+    p.classList.remove('hide');
+}
+
 
 function selectVisibility(el) {
     let selected = document.querySelector('.visibility .selected');
@@ -119,6 +134,12 @@ function selectVisibility(el) {
     }
     el.querySelector('.check').classList.add('mark');
     el.classList.add('selected');
+
+    let from = document.querySelector('.selected .from').innerHTML;
+    let p = document.querySelector('footer div p');
+    let privateMessage = document.querySelector('.visibility .selected p').innerHTML;
+    p.innerHTML = `Enviando para ${from} (${privateMessage})`;
+    p.classList.remove('hide');
 }
 
 function show(element) {
@@ -134,7 +155,15 @@ function show(element) {
 }
 
 function entrarSala() {
-    axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", pessoa);
+    const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", pessoa);
+    promisse.catch(deuRuim);
+}
+
+function deuRuim(erro) {
+    if (erro.response.status === 400) {
+        alert('Nome já em uso! Tente novamente.');
+    };
+    window.location.reload();
 }
 
 function get() {
@@ -179,7 +208,19 @@ function sendMessage() {
 
 }
 
+function scrollar() {
+    const main = document.querySelectorAll('section');
+    main[main.length - 1].scrollIntoView();
+}
+
+function username() {
+    pessoa.name = prompt('Qual é o seu nome?');
+    return pessoa;
+}
+
+username();
 setInterval(get, 3000);
 entrarSala();
 setInterval(isOnline, 5000);
 getParticipantes();
+// setInterval(getParticipantes, 10000);
