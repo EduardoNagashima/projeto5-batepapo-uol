@@ -37,30 +37,29 @@ function writeMessege(getMesseges) {
                 msg.innerHTML += `
                         <section class="online-offline">
                         <div>
-                            <span class="time">${obj.time}</span>
+                            <span class="time">(${obj.time})</span>
                             <strong class="from">${obj.from}</strong>
-                            <span class="to">para <b>${obj.to}</b>:</span>
-                            <p class="text">${obj.text}</p>
+                            <p class="text"> ${obj.text}</p>
                         </div>
                     </section>`;
             } else if (obj.type == 'message') {
                 msg.innerHTML += `
                     <section class="message" data-identifier="message">
                     <div>
-                        <span class="time">${obj.time}</span>
+                        <span class="time">(${obj.time})</span>
                         <strong class="from"> ${obj.from}</strong>
-                        <span class="to">para <b>${obj.to}</b>:</span>
-                        <p class="text">${obj.text}</p>
+                        <span class="to">para <b>${obj.to}</b>: </span>
+                        <p class="text"> ${obj.text}</p>
                     </div>
                 </section>`;
             } else if (obj.type == "private_message" && (getMesseges[i].to == pessoa.name || getMesseges[i].from == pessoa.name)) {
                 msg.innerHTML += `
                     <section class="private-message" data-identifier="message">
                     <div>
-                        <span class="time">${obj.time}</span>
+                        <span class="time">(${obj.time})</span>
                         <strong class="from"> ${obj.from}</strong>
-                        <span class="to">para <b>${obj.to}</b>:</span>
-                        <p class="text">${obj.text}</p>
+                        <span class="to">para <b>${obj.to}</b>: </span>
+                        <p class="text"> ${obj.text}</p>
                     </div>
                 </section>`;
             }
@@ -212,12 +211,16 @@ function pegarNome() {
     pessoa.name = document.querySelector('.login input').value;
     let load = document.querySelector('.nomeinput');
     load.innerHTML = `<img src="images/loading.gif" alt="loading">`
-    setInterval(get, 3000);
+    setTimeout(loadScreen, 500);
     entrarSala();
-    setInterval(isOnline, 5000);
-    getParticipantes();
-    let teste = document.querySelector('.login');
-    console.log(teste);
-    teste.classList.add('invisivel');
-    return pessoa;
 }
+
+function loadScreen() {
+    let login = document.querySelector('.login');
+    login.classList.toggle('invisivel');
+    login.classList.toggle('login');
+}
+
+setInterval(get, 3000);
+setInterval(isOnline, 5000);
+getParticipantes();

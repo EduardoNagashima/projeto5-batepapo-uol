@@ -16,13 +16,12 @@ body {
 /* ------------------------------------- CABEÇALHO ------------------------------------- */
 
 header {
+    top: 0;
     width: var(--default-width);
     background-color: #FFF;
     position: fixed;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
-    left: 0;
-    right: 0;
-    height: 200px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,11 +29,11 @@ header {
 }
 
 header img {
-    width: 150px;
+    width: 75px;
 }
 
 header ion-icon {
-    font-size: 120px;
+    font-size: 42px;
     cursor: pointer;
 }
 
@@ -56,21 +55,22 @@ main {
 }
 
 section {
-    padding: 25px;
+    padding: 10px;
     margin-bottom: 4px;
     display: flex;
     align-items: center;
     word-break: break-all;
+    border-radius: 2px;
 }
 
 section .from {
-    font-size: 42px;
-    padding: 10px;
+    font-size: 16px;
+    padding: 2px;
     font-weight: 700;
 }
 
 section span {
-    font-size: 42px;
+    font-size: 15px;
 }
 
 .online-offline {
@@ -87,13 +87,13 @@ section span {
 
 section .time {
     color: #AAA;
-    font-size: 35px;
+    font-size: 15px;
     font-weight: 400;
 }
 
 section div p {
     display: inline-block;
-    font-size: 40px;
+    font-size: 15px;
     font-weight: 400;
     margin-top: 4px;
 }
@@ -105,14 +105,14 @@ footer {
     position: fixed;
     width: var(--default-width);
     bottom: 0;
-    height: 180px;
+    height: 100px;
     background-color: #FFF;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 }
 
 footer div {
     display: flex;
-    height: 180px;
+    height: 100px;
     justify-content: space-between;
     align-items: center;
 }
@@ -121,7 +121,7 @@ footer input {
     border: none;
     height: 100%;
     width: 90%;
-    font-size: 50px;
+    font-size: 20px;
     cursor: pointer;
     outline: none;
     padding-left: 20px;
@@ -133,7 +133,7 @@ footer div p {
     bottom: 20px;
     left: 20px;
     color: #AAA;
-    font-size: 35px;
+    font-size: 15px;
     font-weight: 300;
 }
 
@@ -141,14 +141,13 @@ footer input::placeholder {
     color: black;
     font-style: italic;
     font-weight: 400;
-    font-size: 50px;
+    font-size: 20px;
 }
 
 footer ion-icon {
-    font-size: 80px;
+    font-size: 30px;
     cursor: pointer;
-    z-index: 1;
-    margin-right: 2%;
+    margin-right: 10px;
 }
 
 .body-fixed {
@@ -265,18 +264,18 @@ aside {
 }
 
 .login img {
-    width: 300px;
-    margin-bottom: 200px;
-    margin-top: 200px;
+    width: 160px;
+    margin-bottom: 70px;
+    margin-top: 100px;
 }
 
 .login input {
-    width: 500px;
-    height: 80px;
+    width: 330px;
+    height: 70px;
     box-sizing: border-box;
     border-radius: 4px;
     border: 1px solid #D7D7D7;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -284,21 +283,15 @@ aside {
 .login input::placeholder {
     text-align: center;
     color: #AEAEAE;
-    font-size: 28px;
+    font-size: 23px;
 }
 
 .login button {
-    width: 180px;
-    height: 60px;
+    width: 150px;
+    height: 65px;
     background: #E7E7E7;
     border-radius: 9px;
     color: #696969;
     font-size: 25px;
     border: none;
-}
-
-@media (min-width: 450px) {
-    /* main {
-        background-color: #28bb25;
-    } */
 }
