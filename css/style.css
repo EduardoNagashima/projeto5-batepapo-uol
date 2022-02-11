@@ -47,7 +47,7 @@ main {
     width: var(--default-width);
     display: flex;
     flex-direction: column;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 .checkmark {
@@ -105,14 +105,14 @@ footer {
     position: fixed;
     width: var(--default-width);
     bottom: 0;
-    height: 100px;
+    height: 80px;
     background-color: #FFF;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 }
 
 footer div {
     display: flex;
-    height: 100px;
+    height: 80px;
     justify-content: space-between;
     align-items: center;
 }
@@ -122,7 +122,6 @@ footer input {
     height: 100%;
     width: 90%;
     font-size: 20px;
-    cursor: pointer;
     outline: none;
     padding-left: 20px;
     position: relative;
@@ -130,7 +129,7 @@ footer input {
 
 footer div p {
     position: absolute;
-    bottom: 20px;
+    bottom: 12px;
     left: 20px;
     color: #AAA;
     font-size: 15px;
@@ -203,7 +202,7 @@ aside {
 }
 
 .menu p {
-    font-size: 35px;
+    font-size: 20px;
     font-weight: 400;
     margin-left: 10px;
     cursor: pointer;
@@ -213,16 +212,16 @@ aside {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px;
+    margin: 6px;
 }
 
 .menu ion-icon {
-    font-size: 50px;
+    font-size: 25px;
     cursor: pointer;
 }
 
 .menu span {
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 700;
     text-align: center;
     margin: 30px;
@@ -232,7 +231,7 @@ aside {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px;
+    margin: 6px;
 }
 
 .mark {

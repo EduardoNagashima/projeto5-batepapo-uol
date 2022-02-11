@@ -213,6 +213,9 @@ function pegarNome() {
     load.innerHTML = `<img src="images/loading.gif" alt="loading">`
     setTimeout(loadScreen, 500);
     entrarSala();
+    setInterval(get, 3000);
+    setInterval(isOnline, 5000);
+    getParticipantes();
 }
 
 function loadScreen() {
@@ -220,7 +223,3 @@ function loadScreen() {
     login.classList.toggle('invisivel');
     login.classList.toggle('login');
 }
-
-setInterval(get, 3000);
-setInterval(isOnline, 5000);
-getParticipantes();
