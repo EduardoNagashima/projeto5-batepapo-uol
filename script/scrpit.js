@@ -78,10 +78,11 @@ function listPersons(resposta) {
     let person = document.querySelector('.contacts');
 
     let selected = document.querySelector('.contacts .selected');
-    
-    nomeSelecionado = selected.querySelector('.from').innerHTML;
+    if (selected){
+        nomeSelecionado = selected.querySelector('.from').innerHTML;
+    }
 
-    if(nomeSelecionado === 'Todos' || nomeSelecionado == null){
+    if(nomeSelecionado === 'Todos' || selected == null){
         person.innerHTML = `
     <div onclick="selectPerson(this)">
         <div class="selected">
@@ -131,8 +132,6 @@ function listPersons(resposta) {
             </div>`
         }
     }
-    
-    
 }
 
 function selectPerson(el) {
@@ -196,7 +195,7 @@ function entrarSala() {
 }
 
 function entrouNaSala(){
-    setInterval(getParticipantes, 8000);
+    setInterval(getParticipantes, 10000);
     setInterval(get, 5000);
     setInterval(isOnline, 5000);
 }
