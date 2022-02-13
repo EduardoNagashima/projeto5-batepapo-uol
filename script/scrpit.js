@@ -4,21 +4,16 @@ let pessoa = {
     name: 'Eduardo'
 }
 
+let nomeSelecionado;
 let selected = 'Todos';
-
-// USAR ESSA FUNÇÃO PRIMEIRO DE TUDO, DEPOIS DELA PODER FAZER TUDO O RESTO!
-// function pegarNome() {
-//     pessoa.name = document.querySelector('.login input').value;
-//     document.querySelector('.login').classList.add('hide');
-// }
+let iniciado = false;
 
 let lastTime = '00:00:00';
 
 function writeMessege(getMesseges) {
-
     if (init === true) {
-        let ultimo = document.querySelectorAll('section');
-        lastTime = ultimo[ultimo.length - 1].querySelector('.time').innerHTML;
+        let ultimaMensagem = document.querySelectorAll('section');
+        lastTime = ultimaMensagem[ultimaMensagem.length - 1].querySelector('.time').innerHTML;
     }
 
     msg = document.querySelector('main');
@@ -33,7 +28,7 @@ function writeMessege(getMesseges) {
             }
             // -- condição pra evitar mensagens antigas ----
         if (getMesseges[i].time > lastTime) {
-            if (obj.type == 'status') {
+            if (obj.type === 'status') {
                 msg.innerHTML += `
                         <section class="online-offline">
                         <div>
@@ -42,7 +37,7 @@ function writeMessege(getMesseges) {
                             <p class="text"> ${obj.text}</p>
                         </div>
                     </section>`;
-            } else if (obj.type == 'message') {
+            } else if (obj.type === 'message') {
                 msg.innerHTML += `
                     <section class="message" data-identifier="message">
                     <div>
@@ -81,17 +76,63 @@ function processaResposta(resposta) {
 
 function listPersons(resposta) {
     let person = document.querySelector('.contacts');
-    for (let i = 0; i < resposta.length; i++) {
-        person.innerHTML += `<div onclick="selectPerson(this)">
-    <div>
-        <ion-icon name="person-circle-sharp"></ion-icon>
-        <p class="from">${resposta[i].name}</p>
-    </div>
-    <div class="checkmark">
-        <ion-icon class="check" name="checkmark-outline"></ion-icon>
-    </div>
-    </div>`
+
+    let selected = document.querySelector('.contacts .selected');
+    
+    nomeSelecionado = selected.querySelector('.from').innerHTML;
+
+    if(nomeSelecionado === 'Todos' || nomeSelecionado == null){
+        person.innerHTML = `
+    <div onclick="selectPerson(this)">
+        <div class="selected">
+            <ion-icon name="people-sharp"></ion-icon>
+            <p class="from">Todos</p>
+        </div>
+        <div class="checkmark">
+            <ion-icon class="check mark" name="checkmark-outline"></ion-icon>
+        </div>
+    </div>` 
+    }else{
+            person.innerHTML = `
+            <div onclick="selectPerson(this)">
+                <div>
+                    <ion-icon name="people-sharp"></ion-icon>
+                    <p class="from">Todos</p>
+                </div>
+                <div class="checkmark">
+                    <ion-icon class="check" name="checkmark-outline"></ion-icon>
+                </div>
+            </div>` 
     }
+    for (let i = 0; i < resposta.length; i++) {
+        if(resposta[i].name === nomeSelecionado){
+            person.innerHTML += `
+            <div onclick="selectPerson(this)">
+                <div class="selected">
+                    <ion-icon name="person-circle-sharp"></ion-icon>
+                    <p class="from">${resposta[i].name}</p>
+                </div>
+                <div class="checkmark">
+                    <ion-icon class="check mark" name="checkmark-outline"></ion-icon>
+                </div>
+            </div>`
+        }else if(resposta[i].name === pessoa.name){
+
+        }else{
+            person.innerHTML += `
+            <div onclick="selectPerson(this)">
+                <div>
+                    <ion-icon name="person-circle-sharp"></ion-icon>
+                    <p class="from">${resposta[i].name}</p>
+                </div>
+                <div class="checkmark">
+                    <ion-icon class="check" name="checkmark-outline"></ion-icon>
+                </div>
+            </div>`
+        }
+    }
+    
+    
 }
 
 function selectPerson(el) {
@@ -150,7 +191,14 @@ function show(element) {
 
 function entrarSala() {
     const promisse = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", pessoa);
+    promisse.then(entrouNaSala);
     promisse.catch(deuRuim);
+}
+
+function entrouNaSala(){
+    setInterval(getParticipantes, 8000);
+    setInterval(get, 5000);
+    setInterval(isOnline, 5000);
 }
 
 function deuRuim(erro) {
@@ -220,7 +268,3 @@ function loadScreen() {
     login.classList.toggle('invisivel');
     login.classList.toggle('login');
 }
-getParticipantes();
-
-setInterval(get, 5000);
-setInterval(isOnline, 5000);
